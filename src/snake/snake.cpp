@@ -283,17 +283,20 @@ bool Snake::autoRun(int intervalMs, const Coordinate& coord, Direction direction
     //audio.playEatFood();
 
     while (true) {
-        astar.setSnake(coords);
-        std::list<Coordinate> path = astar.findPath(foodPos);
+        std::list<Coordinate> path = astar.findPath(coords, foodPos);
         if (path.empty()) {
+            printf("no path\n");
             break;
         }
         count += path.size();
-        std::cout << "   #" << path.size() << std::endl;
+        printf("     #%ld\n", path.size());
+        for (auto coord : path) {
+            printf("(%d, %d, %d)\n", coord.x, coord.y, coord.z);
+        }
         if (autoMove(path, intervalMs) == Snake::GAME_OVER) {
             break;
         }
-        std::cout << coords.size() << std::endl;
+        printf("<%ld>\n", coords.size());
     }
     audio.playFail();
     std::cout << "Moved " << count << " steps" << std::endl;

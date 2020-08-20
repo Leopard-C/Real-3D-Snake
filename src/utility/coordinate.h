@@ -43,6 +43,27 @@ struct Coordinate {
         return x > -1 && x < 8 && y > -1 && y < 8 && z > -1 && z < 8;
     }
 
+    bool isAdjacent(const Coordinate& rhs) const {
+        int deltaX = abs(rhs.x - x);
+        int deltaY = abs(rhs.y - y);
+        int deltaZ = abs(rhs.z - z);
+        if (deltaX > 1 || deltaY > 1 || deltaZ > 1) {
+            return false;
+        }
+        return (deltaX + deltaY + deltaZ < 2);
+    }
+
+    bool isNear(const Coordinate& rhs) const {
+        int deltaX = abs(rhs.x - x);
+        int deltaY = abs(rhs.y - y);
+        int deltaZ = abs(rhs.z - z);
+        return (deltaX < 2 && deltaY < 2 && deltaZ < 2);
+    }
+
+    bool isSame(const Coordinate& rhs) const {
+        return x == rhs.x && y == rhs.y && z == rhs.z;
+    }
+
     int x;
     int y;
     int z;

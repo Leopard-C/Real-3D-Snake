@@ -153,7 +153,7 @@ int main() {
             snake.stopFlashFoodPos();
         }
         std::thread t([&snake]{
-            snake.autoRun(100);
+            snake.autoRun(30);
         });
         t.detach();
         RETURN_OK();

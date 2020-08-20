@@ -4,8 +4,7 @@
 #include <list>
 #include <vector>
 #include <cstring>
-
-using uint = unsigned int;
+#include <array>
 
 struct Node {
     Node(const Coordinate& coord_, Node* parent_ = nullptr)
@@ -17,25 +16,28 @@ struct Node {
     Node* parent;
 };
 
+
 class AStar {
 public:
-    void setSnake(const std::deque<Coordinate>& coords_);
+    using uint = unsigned int;
+    using Path = std::list<Coordinate>;
+    using Walls = std::array<std::array<std::array<char,8>,8>,8>;
 
-    bool detectCollision(const Coordinate& coord) const;
+    std::list<Coordinate> findPath(const std::deque<Coordinate>& coords_, const Coordinate& dest);
+
+private:
+    std::list<Coordinate> findPath_(const std::deque<Coordinate>& coords_,
+                                    const Coordinate& dest,
+                                    bool destIsFood);
+
+    bool detectCollision(const Walls& walls, const Coordinate& coord) const;
 
     Node* findNodeOnList(const std::list<Node*>& list, const Coordinate& coord);
 
     uint manhattan(const Coordinate& src, const Coordinate& dest);
 
-    std::list<Coordinate> findPath(const Coordinate& dest);
+    void destroyList(std::list<Node*>& list);
 
 private:
-    char walls[8][8][8];
-    std::deque<Coordinate> coords;
-    std::deque<Coordinate> coordsBuff;
-
-    Coordinate directions[6] = {
-        { 0, 0, 1 }, {  0, 1, 0 }, { 0, 0, -1 }, { 0, -1, 0 },
-        { 1, 0, 0 }, { -1, 0, 0 }
-    };
+    static const Coordinate directions[6];
 };

@@ -145,7 +145,7 @@ bool Audio::loadFile(const char* filename) {
 
 bool Audio::play(const char* filename, bool loop) {
     if (isPlaying) {
-        std::cout << "Is playing\n";
+        //std::cout << "Is playing\n";
         return false;
     }
     isPlaying = true;
