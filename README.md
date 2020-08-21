@@ -15,5 +15,5 @@
 
 + AI自动寻路:
 
-    ![screenshot](3D-Snake-Server-Pi/pic/screenshot.png)
+    ![screenshot](3D-Snake-Server-Pi/pic/photo.png)
 
