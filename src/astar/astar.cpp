@@ -171,7 +171,6 @@ std::list<Coordinate> AStar::findPath_(const std::deque<Coordinate>& coords_,
 
         // 能
         if (nextPath.empty() || nextPath.back() == back) {
-            std::cout << "Double" << std::endl;
             return path;
         }
 

@@ -134,13 +134,14 @@ int Snake::move() {
         if (std::find(coords.begin(), coords.end(), newCoord) != coords.end()) {
             return Snake::GAME_OVER;
         }
+        printf("(%d, %d, %d)\n", newCoord.x, newCoord.y, newCoord.z);
         if (newCoord == foodPos) {
             audio.playEatFood();
             coordsMutex.lock();
             coords.push_front(newCoord);
             cube(coords.front()) = LED_ON;
             coordsMutex.unlock();
-            std::cout << coords.size() << std::endl;
+            printf("          <%ld>\n", coords.size());
             if (!generateNewFoodDirection()) {
                 return Snake::GAME_OVER;
             }
@@ -289,14 +290,14 @@ bool Snake::autoRun(int intervalMs, const Coordinate& coord, Direction direction
             break;
         }
         count += path.size();
-        printf("     #%ld\n", path.size());
+        printf("          #%ld\n", path.size());
         for (auto coord : path) {
             printf("(%d, %d, %d)\n", coord.x, coord.y, coord.z);
         }
         if (autoMove(path, intervalMs) == Snake::GAME_OVER) {
             break;
         }
-        printf("<%ld>\n", coords.size());
+        printf("              <%ld>\n", coords.size());
     }
     audio.playFail();
     std::cout << "Moved " << count << " steps" << std::endl;
@@ -340,8 +341,7 @@ void Snake::backgroundThread_FlashFoodPos() {
     foodFlashMutex.lock();
     Call(cube(foodPos) = LED_ON);
     foodFlashMutex.unlock();
-
-    std::cout << "backgroundThread_FlashFoodPos quit!\n";
+    //std::cout << "backgroundThread_FlashFoodPos quit!\n";
 }
 
 

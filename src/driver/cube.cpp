@@ -132,7 +132,7 @@ void LedCube::backgroundThread() {
         mutex_.unlock();
         // delay some time
         //   slepp serveral nanoseconds
-        for (int i = 0; i < 3000; ++i) {
+        for (int i = 0; i < 5000; ++i) {
             //;
         }
     }

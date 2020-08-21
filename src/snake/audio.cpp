@@ -214,7 +214,7 @@ void Audio::thread_play(bool loop, snd_pcm_t* _soundDevice,
 	snd_pcm_drain(_soundDevice);
     snd_pcm_close(_soundDevice);
 
-    *p_is_playing = false;
     *p_force_quit = false;
+    *p_is_playing = false;
 }
 

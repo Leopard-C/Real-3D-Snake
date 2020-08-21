@@ -148,7 +148,7 @@ public:
      *      ==> the luminance of each led  ( ! ! ! )
      *   The smaller the count, the brighter of the LEDs
     ************************************************************/
-    enum { DefaultLoopCount = 90 };
+    enum { DefaultLoopCount = 150 };
     static void setLoopCount(int count) {
         if (count == 0)
             loopCount = DefaultLoopCount;
