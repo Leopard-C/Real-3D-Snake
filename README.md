@@ -19,3 +19,7 @@
 
     ![screenshot](3D-Snake-Server-Pi/pic/photo.png)
 
+
+### 演示视频
+
+[BV1av411i7Go](https://www.bilibili.com/video/BV1av411i7Go)
