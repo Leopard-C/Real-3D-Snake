@@ -2,6 +2,8 @@
 
 > 树莓派 + 光立方
 
+光立方驱动及特效代码： [Leopard-C/LedCube](https://github.com/Leopard-C/LedCube)
+
 ### 控制方式:
 
 + 人工控制： 通过HTTP请求控制。（用Qt写了个客户端，按键绑定如下）
